@@ -895,6 +895,22 @@ extern int __overflow (FILE *, int);
 
    * Examine `solutions/sample.s` to see the generated assembly instructions for `printf` and `return`.
 ```bash
+
+**printf**
+
+-"leaq	.LC0(%rip), %rax" is the core instruction for printf
+ -leaq (load effective address): computes an address and loads it into a register.
+ -.LC0(%rip): Calculates the address of the .LC0 label where the string "Hello, PP7!" is to the instruction      pointer "%rip". The return value is stored in %rax.
+-"movq %rax, %rdi": moves the the data from the rax register to the rdi register.
+- "call	puts@PLT": It calls the printf function or because of the linux system puts function. Through the dynamic linker the memory address of printf in libc and patches the PLT entry
+
+**return 0**
+-"movl	$0, %eax": The integer value "0" moves to the %eax register
+-"popq %rbp": restores the base pointer and cleans up the stack frame, so that the program returns to the correct execution. 
+
+
+```
+```bash
    	.file	"sample.c"
 	.text
 	.section	.rodata
