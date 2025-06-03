@@ -153,6 +153,13 @@ main:
    ```
 
    * Verify that `solutions/sample.o` is an object file (e.g., with `file sample.o`).
+```bash
+The Output is: "sample.o: ELF 64-bit LSB relocatable, x86-64, version 1 (SYSV), not stripped"
+ELF (Executable and Linkable Format) is the standard binary file format. The file is a 64-bit architecture. It is a relocatble file, which means it is suitable for linking with other object files and libraries to create an executable. This confirms that solutions/sample.o is a compiled object file. 
+
+
+
+```
 5. **Link** to produce an executable:
 
    ```bash
