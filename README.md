@@ -894,8 +894,7 @@ extern int __overflow (FILE *, int);
    ```
 
    * Examine `solutions/sample.s` to see the generated assembly instructions for `printf` and `return`.
-   * 
-   ```bash
+```bash
    	.file	"sample.c"
 	.text
 	.section	.rodata
