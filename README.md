@@ -235,6 +235,13 @@ s/printf\s*/: The expression pattern to search each line with sed.
 /debug_printf/: The string that replaces the literal string.
 /g: A flag that that stands for global, which tells sed to replace all literal strings.
 
+awk (Aho, Weiberger, Kernighan)
+command example: "awk '/debug_printf/ { print NR, $0 }' solutions/debug_sample.c"
+Awk is a pattern scanning and processing language. It looks for patterns and execute the 
+
+Vim CLI
+command example: "vim -c ":%s/printf/debug_printf/g" -c ":wq" solutions/debug_sample.c"
+
 ```
 
 
