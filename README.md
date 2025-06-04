@@ -210,6 +210,7 @@ ELF (Executable and Linkable Format) is the standard binary file format. The fil
    ```
 7. **Explain** each tool’s approach to regex-based search and replace, and when you might prefer one over the others.
 
+```
 Grep (Global regular expression print)
 command example: "grep -En "printf\s*\(" solutions/debug_sample.c"
 Grep (Global regular expression print) searches the input line an prints the line matched to the input.
@@ -234,6 +235,7 @@ s/printf\s*/: The expression pattern to search each line with sed.
 /debug_printf/: The string that replaces the literal string.
 /g: A flag that that stands for global, which tells sed to replace all literal strings.
 
+```
 
 
 Sed (stream editor) can filter 
