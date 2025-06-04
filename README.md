@@ -213,11 +213,26 @@ ELF (Executable and Linkable Format) is the standard binary file format. The fil
 Grep (Global regular expression print)
 command example: "grep -En "printf\s*\(" solutions/debug_sample.c"
 Grep (Global regular expression print) searches the input line an prints the line matched to the input.
+
 -E: It enables extend regular expression. It has a better syntax, which intrepreted characters like "()" ,"{}", "+" not only as literal character but as operator character.
 n: It prints the lines where the searched inputs are.
 \s*: Matches whitespace characters
 \(: Is the opening parenthises followed the file name where the input should be searched ("solutions/debug_sample.c)
 
+Sed (stream editor)
+command example: "sed -E -i.bak 's/printf\s*/debug_printf/g' solutions/debug_sample.c"
+Ser is a stream editor that is used to perform basic text transformation on an input stream line by line. 
+It filters and transform text. Sed reads the input line by line and adds a set of editing commands to each line.
+After that it write the result back to the file.
+
+-E: It enables extend regular expression. It has a better syntax, which intrepreted characters like "()" ,"{}", "+" not only as literal character but as operator character.
+-i.bak: It tells the sed to edit the file directly. Bak says the sed to create a backup copy of the original file before the change. The name of the bakup file is in this case "debug_sample.c.bak".
+s: A substitute command to find and replace a text.
+s/printf\s*/: The expression pattern to search each line with sed.
+/printf\: The literal string.
+\s*: Matches whitespace characters.
+/debug_printf/: The string that replaces the literal string.
+/g: A flag that that stands for global, which tells sed to replace all literal strings.
 
 
 
