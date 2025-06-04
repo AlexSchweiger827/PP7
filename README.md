@@ -209,7 +209,16 @@ ELF (Executable and Linkable Format) is the standard binary file format. The fil
    vim -c ":%s/printf/debug_printf/g" -c ":wq" solutions/debug_sample.c
    ```
 7. **Explain** each tool’s approach to regex-based search and replace, and when you might prefer one over the others.
+Grep (Global regular expression print) searches the input line an prints the line matched to the input.
+command example: "grep -En "printf\s*\(" solutions/debug_sample.c"
+-E: It enables extend regular expression. It has a better syntax, which intrepreted characters like "()" ,"{}", "+" not only as literal character but as operator character.
+n: It prints the lines where the searched inputs are.
+\s*: Matches whitespace characters
+\(: Is the opening parenthises followed the file name where the input should be searched ("solutions/debug_sample.c)
 
+
+
+Sed (stream editor) can filter 
 ---
 
 ### Task 3: Modular Linking with `extern`
