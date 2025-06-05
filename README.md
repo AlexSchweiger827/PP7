@@ -296,9 +296,17 @@ NR (Number of record): It shows the current line number
 $0:  The output will show the entire line
 
 
-Vim CLI
+Vim CLI (Vi IMproved 
 command example: "vim -c ":%s/printf/debug_printf/g" -c ":wq" solutions/debug_sample.c"
+Vim as an interactive text editor also can search and replace text.
+The replacement can be executed thorugh CLI. VIM can preview changes and undo them.
 
+vim: The text editor
+-c (CLI): It is a batch operation
+%s/printf/debug_printf/g": "Printf" is the pattern that will replaced and "debug_printf" is the replacement. g is a flag that that stands for global, which tells sed to replace all literal strings.
+
+
+To replace a string or a pattern in one file the "Vim CLI" is suitable for the task. To replace a text in many files the stream editor ("sed") would be the appropriat option for the . For searching a line I would use "grep". 
 ```
 
 
