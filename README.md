@@ -359,3 +359,4 @@ Sed (stream editor) can filter
 ---
 
 **Remember:** Stop working after **90 minutes** and record where you stopped.
+I finished task 1 and 2 in 96 minutes. 
