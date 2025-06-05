@@ -286,7 +286,15 @@ s/printf\s*/: The expression pattern to search each line with sed.
 
 awk (Aho, Weiberger, Kernighan)
 command example: "awk '/debug_printf/ { print NR, $0 }' solutions/debug_sample.c"
-Awk is a pattern scanning and processing language. It looks for patterns and execute the 
+Awk is a pattern scanning and processing language.
+It reads the input and processes it line by line , looks for patterns and execute the associated actions.
+
+/debug_printf/: The pattern that awk check line by line in the input file (debug_sample.c)
+{ print NR, $0 }: The action block that awk execute only for the lines that match the pattern.
+print: The output text
+NR (Number of record): It shows the current line number
+$0:  The output will show the entire line
+
 
 Vim CLI
 command example: "vim -c ":%s/printf/debug_printf/g" -c ":wq" solutions/debug_sample.c"
