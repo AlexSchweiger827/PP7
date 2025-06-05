@@ -168,7 +168,56 @@ ELF (Executable and Linkable Format) is the standard binary file format. The fil
 
    * Run `./solutions/sample` and confirm it prints `Hello, PP7!`.
 6. **Explain** in comments or a short README how each stage transforms the code.
+```
+1.) Preprocess (sample.i)
+example command: "gcc -E sample.c -o solutions/sample.i"
+The preprocessor handles the directives like #include <stdio.h>.
+It replaces the content of the directives and any headers that the directive includes into a lot of lines of the standard library declarations macros and type definitions (e.g. FILE *__restrict __s, const char *__restrict __format, __gnuc_va_list __arg) __asm__ ("" "__isoc99_vfscanf")). It also removes the comments of the programm.
 
+2.) Compile to assembly (sample.i)
+example command: "gcc -S solutions/sample.i -o solutions/sample.s"
+The compiler translates the preprocessed code into assembly language.
+every C command is converted into assembly instructions for the architecture of the CPU.
+The compiler sets up and tears down stack frames for functions (e.g. "pushq %rbp", "movq %rsp, %rbp", "ret").
+It translates functions (e.g. printf) into assembly language and moves it into the right registers or stacks (e.g. "leaq .LC0(%rip), %rax"). Instructions like "return 0" are placed to the right register (e.g. movl $0, %eax"
+
+
+printf
+
+-"leaq	.LC0(%rip), %rax" is the core instruction for printf
+ -leaq (load effective address): computes an address and loads it into a register.
+ -.LC0(%rip): Calculates the address of the .LC0 label where the string "Hello, PP7!" is to the instruction      pointer "%rip". The return value is stored in %rax.
+-"movq %rax, %rdi": moves the the data from the rax register to the rdi register.
+- "call	puts@PLT": It calls the printf function or because of the linux system puts function. Through the dynamic linker the memory address of printf in libc and patches the PLT entry
+
+**return 0**
+
+-"movl	$0, %eax": The integer value "0" moves to the %eax register
+-"popq %rbp": restores the base pointer and cleans up the stack frame, so that the p
+
+3.) Assemble (sample.o)
+example command: "gcc -c solutions/sample.s -o solutions/sample.o"
+
+The assembler changes the assembly code into machine code.
+Every assembly instruction (e.g. "movq	%rax, %rdi", "call puts@PLT") is converted into binary machine code.
+The machine code and data are packaged into an object file format.
+In the object file is also a symbol table that defines functions (e.g. "main", "printf") and information about the adjustment of the code by the linker. The file is not executable.
+
+4.) Link (sample)
+example command: "gcc solutions/sample.o -o solutions/sample"
+
+The linker combines object files with libraries to create a executable programm.
+It searches libraries for definitions and global variables that were declared or referenced in the object files.
+It connect the declaration or references to the memory adress in the final executable.
+The linker adds a runtime startup code that initialized the program environment.
+The program then will be changed in an executable file, which can now be runned by the operating system.
+ 
+5.) Execute (sample)
+example command: "./solutions/sample"
+The operating system loads the executable into memory and starts the file.
+The output will be displayed on the console.
+
+```
 ---
 
 ### Task 2: Regex Search & Replace in Code
